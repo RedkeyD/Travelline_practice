@@ -19,7 +19,11 @@ bool exit = false;
 // Initialize dictionaries
 fileReader.ReadFile( filePath, englishToRussianDictionary, russianToEnglishDictionary );
 
+<<<<<<< HEAD
 //check dictionaries for input errors
+=======
+//check dictionaries for errors
+>>>>>>> 969d71d90b5482da3df10b4c0e9e08daaf6284d9
 InputValidator inputValidator = new InputValidator( englishToRussianDictionary, russianToEnglishDictionary );
 
 TranslationLoop( translationMessage, exitMessage, farewellWords, englishToRussianDictionary, russianToEnglishDictionary );
