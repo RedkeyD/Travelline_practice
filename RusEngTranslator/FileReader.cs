@@ -4,7 +4,11 @@
     {
         try
         {
-            CheckIfFileExists( filePath );
+            if ( !File.Exists( filePath ) )
+            {
+                Console.WriteLine( "File not found." );
+                throw new FileNotFoundException( $"File not found: {filePath}" );
+            }
 
             string[] lines = File.ReadAllLines( filePath );
 
@@ -15,15 +19,6 @@
         catch ( Exception ex )
         {
             Console.WriteLine( $"Error reading file: {ex.Message}" );
-        }
-    }
-
-    private void CheckIfFileExists( string filePath )
-    {
-        if ( !File.Exists( filePath ) )
-        {
-            Console.WriteLine( "File not found." );
-            throw new FileNotFoundException( $"File not found: {filePath}" );
         }
     }
 
