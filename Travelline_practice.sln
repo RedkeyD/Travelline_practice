@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Casino", "Casino\Casino.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RusEngTranslator", "RusEngTranslator\RusEngTranslator.csproj", "{687C7B7B-4D74-4EF7-9176-D2C609696BEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactory", "CarFactory\CarFactory.csproj", "{14602DEA-8423-4DBE-919F-643B52416703}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{687C7B7B-4D74-4EF7-9176-D2C609696BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{687C7B7B-4D74-4EF7-9176-D2C609696BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{687C7B7B-4D74-4EF7-9176-D2C609696BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14602DEA-8423-4DBE-919F-643B52416703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14602DEA-8423-4DBE-919F-643B52416703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14602DEA-8423-4DBE-919F-643B52416703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14602DEA-8423-4DBE-919F-643B52416703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
