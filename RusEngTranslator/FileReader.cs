@@ -7,6 +7,7 @@
             if ( !File.Exists( filePath ) )
             {
                 Console.WriteLine( "File not found." );
+
                 throw new FileNotFoundException( $"File not found: {filePath}" );
             }
 
