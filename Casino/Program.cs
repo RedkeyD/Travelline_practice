@@ -14,7 +14,6 @@ int randomNum = random.Next( 1, 20 );
 string betPrompt = "Введите вашу ставку: ";
 Console.Write( betPrompt );
 
-
 string betInput = Console.ReadLine();
 
 if ( int.TryParse( betInput, out int parsedBet ) )
@@ -24,9 +23,9 @@ if ( int.TryParse( betInput, out int parsedBet ) )
 else
 {
     string inputError = "Ошибка. Попробуйте  еще раз ввести ваше значение";
-    Console.WriteLine( inputError );
-    
+    Console.WriteLine( inputError );  
 }
+
 if ( currentSum > 0 && bet <= currentSum )
 {
     string randomNumMessage = $"Вам выпало число {randomNum}";
@@ -47,7 +46,6 @@ if ( currentSum > 0 && bet <= currentSum )
 
         string loseMessage = $"Вы проиграли вашу ставку в размере {bet}";
         Console.WriteLine( loseMessage );
-        
     }
 }
 else
@@ -55,10 +53,3 @@ else
     string insufficientFundsMessage = $"Недостаточно средств на балансе {currentSum}";
     Console.WriteLine( insufficientFundsMessage );
 }
-
-
-
-
-
-
-
