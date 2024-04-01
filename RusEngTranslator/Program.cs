@@ -2,61 +2,42 @@
 {
     static void Main( string[] args )
     {
-        TextFileReader fileReader = new TextFileReader();
-        Dictionary<string, string> englishToRussianDictionary = new Dictionary<string, string>();
-        Dictionary<string, string> russianToEnglishDictionary = new Dictionary<string, string>();
-
         string filePath = "WordsTranslations.txt";
-        string errorMessage;
 
-        bool exit = false;
+        Translator translator = new Translator( filePath );
+        translator.TakeDataFromTextFile();
+        translator.FillRussianDictionary();
+        translator.FillEnglishDictionary();
 
-        fileReader.ReadFile( filePath, englishToRussianDictionary, russianToEnglishDictionary );
+        TranslationLoop( translator );
 
-        InputValidator inputValidator = new InputValidator( englishToRussianDictionary, russianToEnglishDictionary );
-
-        while ( !exit )
-        {
-            Console.WriteLine( "Enter a word to translate (Type exit to leave a program): " );
-
-            string wordToTranslate = Console.ReadLine().Trim().ToLower();
-
-
-            if ( wordToTranslate == "exit" )
-            {
-                Console.WriteLine( "Bye, have a good day" );
-
-                exit =  true; 
-            }
-            else
-            {
-                if ( inputValidator.ValidateInput( wordToTranslate, out errorMessage ) )
-                {
-                    TranslateWord( wordToTranslate, englishToRussianDictionary, russianToEnglishDictionary );
-                }
-                else
-                {
-                    Console.WriteLine( errorMessage ); // Handle input errors
-                }
-            }
-        }
     }
 
-    static void TranslateWord( string wordToTranslate, Dictionary<string, string> englishToRussianDictionary, Dictionary<string, string> russianToEnglishDictionary )
+    static void TranslationLoop(Translator translator)
     {
-        if ( englishToRussianDictionary.ContainsKey( wordToTranslate ) )
+        Console.WriteLine( "Enter a word to translate (Type exit to leave a program): " );
+
+        string wordToTranslate = Console.ReadLine().Trim().ToLower();
+
+        if ( wordToTranslate.Length == 0 )
         {
-            string russianTranslation = englishToRussianDictionary[ wordToTranslate ];
-            Console.WriteLine( $"{wordToTranslate} in Russian is {russianTranslation}" );
+            Console.WriteLine( "Oops, seems like you forgot to enter word" );
+            TranslationLoop( translator );
         }
-        else if ( russianToEnglishDictionary.ContainsKey( wordToTranslate ) )
+        
+        if ( wordToTranslate == "exit" )
         {
-            string englishTranslation = russianToEnglishDictionary[ wordToTranslate ];
-            Console.WriteLine( $"{wordToTranslate} на английском это {englishTranslation}" );
-        }
+            Console.WriteLine( "Bye, have a good day" );
+            return;
+        }            
+
+        string translatedWord = translator.TranslateWord( wordToTranslate );
+
+        if ( translatedWord == null )
+            Console.WriteLine( "Translations not found" );
         else
-        {
-            Console.WriteLine( $"Translation not found for '{wordToTranslate}'" );
-        }
+            Console.WriteLine( $"Tranlated word: { translatedWord}" );
+
+        TranslationLoop( translator );
     }
 }

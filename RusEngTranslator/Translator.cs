@@ -1,36 +1,72 @@
 ﻿public class Translator
 {
-    private Dictionary<string, string> englishToRussianDictionary;
-    private Dictionary<string, string> russianToEnglishDictionary;
+    private Dictionary<string, string> _englishToRussianDictionary = new Dictionary<string, string>();
+    private Dictionary<string, string> _russianToEnglishDictionary = new Dictionary<string, string>();
+    private TextFileReader _textFileReader = new TextFileReader();
+    private string[] _lines = null;
+    private string _filePath = null;
 
-    // Constructor to initialize dictionaries
-    public Translator( Dictionary<string, string> engToRusDict, Dictionary<string, string> rusToEngDict )
+    public Translator(string filePath) 
     {
-        englishToRussianDictionary = engToRusDict;
-        russianToEnglishDictionary = rusToEngDict;
+        _filePath = filePath;
     }
 
-    public string TranslateToRussian( string word )
+    public void TakeDataFromTextFile()
     {
-        if ( englishToRussianDictionary.ContainsKey( word ) )
-        {
-            return englishToRussianDictionary[ word ];
+        try
+        { 
+            _lines = _textFileReader.ReadDictionaryFile( _filePath ); 
         }
-        else
+        catch(FileNotFoundException)
         {
-            return "Translation not found";
+            _lines = null;
+        }
+         
+    }
+    public void FillEnglishDictionary()
+    {
+        foreach ( string line in _lines )
+        {
+            string[] words = line.Split( ':' );
+            if ( words.Length == 2 )
+            {
+                string englishWord = words[ 0 ].Trim();
+                string russianWord = words[ 1 ].Trim();
+
+                _englishToRussianDictionary[ englishWord ] = russianWord;
+            }
         }
     }
 
-    public string TranslateToEnglish( string word )
+    public void FillRussianDictionary()
     {
-        if ( russianToEnglishDictionary.ContainsKey( word ) )
+        foreach ( string line in _lines )    
         {
-            return russianToEnglishDictionary[ word ];
+            string[] words = line.Split( ':' );
+            if ( words.Length == 2 )
+            {
+                string englishWord = words[ 0 ].Trim();
+                string russianWord = words[ 1 ].Trim();
+
+                _russianToEnglishDictionary[ russianWord ] = englishWord;
+            }
         }
-        else
+    }
+
+    public string TranslateWord( string wordToTranslate )
+    {
+        string translatedWord = null;
+
+        if ( _englishToRussianDictionary.ContainsKey( wordToTranslate ) )
         {
-            return "Translation not found";
+            translatedWord = _englishToRussianDictionary[ wordToTranslate ];
         }
+
+        if ( _russianToEnglishDictionary.ContainsKey( wordToTranslate ) )
+        {
+            translatedWord = _russianToEnglishDictionary[ wordToTranslate ];
+        }
+
+        return translatedWord;
     }
 }
