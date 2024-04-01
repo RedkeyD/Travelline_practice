@@ -20,7 +20,7 @@
 
         if ( wordToTranslate.Length == 0 )
         {
-            Console.WriteLine( "Oops, seems like you forgot to enter word" );
+            Console.WriteLine( "Oops, seems like you forgot to enter word. Don't worry, we will not punish you for it, just don't make this mistake again :)" );
             TranslationLoop( translator );
         }
         
