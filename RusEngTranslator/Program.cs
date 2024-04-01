@@ -2,7 +2,7 @@
 {
     static void Main( string[] args )
     {
-        FileReader fileReader = new FileReader();
+        TextFileReader fileReader = new TextFileReader();
         Dictionary<string, string> englishToRussianDictionary = new Dictionary<string, string>();
         Dictionary<string, string> russianToEnglishDictionary = new Dictionary<string, string>();
 
@@ -42,7 +42,6 @@
         }
     }
 
-
     static void TranslateWord( string wordToTranslate, Dictionary<string, string> englishToRussianDictionary, Dictionary<string, string> russianToEnglishDictionary )
     {
         if ( englishToRussianDictionary.ContainsKey( wordToTranslate ) )
@@ -61,6 +60,3 @@
         }
     }
 }
-    
-
-

@@ -1,6 +1,9 @@
-﻿public class FileReader
+﻿public class TextFileReader
 {
-    public void ReadFile( string filePath, Dictionary<string, string> englishToRussianDictionary, Dictionary<string, string> russianToEnglishDictionary )
+    public void ReadFile( 
+        string filePath,
+        Dictionary<string, string> englishToRussianDictionary,
+        Dictionary<string, string> russianToEnglishDictionary  )
     {
         try
         {
@@ -22,15 +25,18 @@
         }
     }
 
-    private void PopulateDictionaries( string[] lines, Dictionary<string, string> englishToRussianDictionary, Dictionary<string, string> russianToEnglishDictionary )
+    private void PopulateDictionaries( 
+        string[] lines, 
+        Dictionary<string, string> englishToRussianDictionary, 
+        Dictionary<string, string> russianToEnglishDictionary )
     {
         foreach ( string line in lines )
         {
-            string[] parts = line.Split( ':' );
-            if ( parts.Length == 2 )
+            string[] words = line.Split( ':' );
+            if ( words.Length == 2 )
             {
-                string englishWord = parts[ 0 ].Trim();
-                string russianWord = parts[ 1 ].Trim();
+                string englishWord = words[ 0 ].Trim();
+                string russianWord = words[ 1 ].Trim();
 
                 englishToRussianDictionary[ englishWord ] = russianWord;
                 russianToEnglishDictionary[ russianWord ] = englishWord;
@@ -38,4 +44,3 @@
         }
     }
 }
-
