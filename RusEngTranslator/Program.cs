@@ -10,7 +10,6 @@
         translator.FillEnglishDictionary();
 
         TranslationLoop( translator );
-
     }
 
     static void TranslationLoop(Translator translator)
