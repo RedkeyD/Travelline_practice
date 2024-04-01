@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarFactory.Models.Cars;
-public interface ICar
+namespace CarFactory.Models.WheelPosition;
+internal interface IWheelPosition
 {
-    public string Name { get; }
-
 }

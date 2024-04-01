@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarFactory.Models.Cars;
-public interface ICar
+namespace CarFactory.Models.Colours;
+public interface IColour
 {
-    public string Name { get; }
-
+    string Colour { get; }
 }
+

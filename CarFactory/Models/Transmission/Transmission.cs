@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarFactory.Models.Cars;
-public interface ICar
+namespace CarFactory.Models.Handbrakes;
+public interface Transmission
 {
-    public string Name { get; }
 
 }
