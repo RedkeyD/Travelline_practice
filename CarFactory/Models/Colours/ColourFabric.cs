@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CarFactory.Models.Colours;
+
 public class ColourFabric
 {
     public IColour ChooseColour(string colour)

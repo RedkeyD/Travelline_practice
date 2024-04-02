@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarFactory.Models.Colours;
-using CarFactory.Models.Transmissions;
+﻿namespace CarFactory.Models.Engines;
 
-namespace CarFactory.Models.Engines;
 public class EngineFabric
 {
     public IEngine ChooseEngine( string engine )
