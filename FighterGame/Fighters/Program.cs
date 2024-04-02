@@ -9,29 +9,13 @@ public class Program
     {
         UI ui = new UI();
 
-        var firstFighter = new Fighter( 
-            ui.GetFighterName(), 
-            ui.GetFighterRace(), 
-            ui.GetFighterWeapon(), 
-            ui.GetFighterArmor(),
-            ui.GetFighterClass() );
-
-        Console.WriteLine( Messages.StartFight );
-        ui.Clear();
-
-        var secondFighter = new Fighter(
-            ui.GetFighterName(),
-            ui.GetFighterRace(),
-            ui.GetFighterWeapon(),
-            ui.GetFighterArmor(),
-            ui.GetFighterClass() );
-
-        Console.WriteLine( Messages.StartFight );
-        ui.Clear();
+        List<IFighter> fighters = new List<IFighter>();
+        fighters.Add(ui.CreateFighter());
+        fighters.Add( ui.CreateFighter() );
 
         var master = new GameMaster();
-        var winner = master.PlayAndGetWinner( firstFighter, secondFighter );
+        var winner = master.PlayAndGetWinner( fighters[0], fighters[1] );
 
-        Console.WriteLine( $"Выигрывает  {winner.Name}" );
+        Console.WriteLine( $"Winner {winner.Name}" );
     }
 }

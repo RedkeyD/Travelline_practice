@@ -4,4 +4,3 @@ public class LowQualityArmor : IArmor
 {
     public int Armor { get; } = 10;
 }
-

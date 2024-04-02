@@ -9,6 +9,7 @@ public interface IFighter
 {
     public int MaxHealth { get; }
     public int CurrentHealth { get; }
+    public int Speed { get; }
 
     public string Name { get; }
 

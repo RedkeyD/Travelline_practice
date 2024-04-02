@@ -9,6 +9,7 @@ public class Fighter : IFighter
 {
     public int MaxHealth => Race.Health + Class.Health;
     public int CurrentHealth { get; private set; }
+    public int Speed => Race.Speed;
 
     public string Name { get; }
 

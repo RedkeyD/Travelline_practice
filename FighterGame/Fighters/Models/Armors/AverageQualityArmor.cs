@@ -4,4 +4,3 @@ public class AverageQualityArmor : IArmor
 {
     public int Armor { get; } = 20;
 }
-

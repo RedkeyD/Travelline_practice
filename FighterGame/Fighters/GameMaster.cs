@@ -10,35 +10,46 @@ public class GameMaster
         int round = 1;
         while ( true )
         {
-            Console.WriteLine( $"Раунд {round++}." );
+            Console.WriteLine( $"Round {round++}." );
 
-            // First fights second
-            if ( FightAndCheckIfOpponentDead( firstFighter, secondFighter ) )
+            // Determine which fighter attacks first based on speed
+            IFighter attacker, defender;
+            if ( firstFighter.Speed >= secondFighter.Speed )
             {
-                return firstFighter;
+                attacker = firstFighter;
+                defender = secondFighter;
+            }
+            else
+            {
+                attacker = secondFighter;
+                defender = firstFighter;
             }
 
-            // Second fights first
-            if ( FightAndCheckIfOpponentDead( secondFighter, firstFighter ) )
+            // Attacker fights defender
+            if ( FightAndCheckIfOpponentDead( attacker, defender ) )
             {
-                return secondFighter;
+                return attacker;
+            }
+
+            // Defender fights attacker
+            if ( FightAndCheckIfOpponentDead( defender, attacker ) )
+            {
+                return defender;
             }
 
             Console.WriteLine();
         }
-
-        throw new UnreachableException();
     }
 
-    private bool FightAndCheckIfOpponentDead( IFighter roundOwner, IFighter opponent )
+    private bool FightAndCheckIfOpponentDead( IFighter attacker, IFighter defender )
     {
-        int damage = roundOwner.CalculateDamage();
-        opponent.TakeDamage(damage);
+        int damage = attacker.CalculateDamage();
+        defender.TakeDamage( damage );
 
         Console.WriteLine(
-            $"Боец {opponent.Name} получает {damage} урона. " +
-            $"Количество жизней: {opponent.CurrentHealth}" );
+            $"Fighter {defender.Name} takes {damage} damage. " +
+            $"Current health: {defender.CurrentHealth}" );
 
-        return opponent.CurrentHealth < 1;
+        return defender.CurrentHealth < 1;
     }
 }
