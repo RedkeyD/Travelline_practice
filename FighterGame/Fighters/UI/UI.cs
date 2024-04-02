@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using Fighters.Models.Armors;
+﻿using Fighters.Models.Armors;
+using Fighters.Models.Classes;
 using Fighters.Models.Fighters;
 using Fighters.Models.Races;
 using Fighters.Models.Weapons;
@@ -7,8 +7,19 @@ using Fighters.Models.Weapons;
 namespace Fighters;
 internal class UI
 {
+    public IFighter CreateFighter()
+    {
+        Fighter fighter = new Fighter(
+            GetFighterName(),
+            GetFighterRace(),
+            GetFighterWeapon(),
+            GetFighterArmor(),
+            GetFighterClass() );
 
-    public string GetFighterName()
+        return fighter;
+    }
+
+    private string GetFighterName()
     {
         Console.WriteLine( Messages.CreateFighterName );
 
@@ -24,12 +35,13 @@ internal class UI
         return fighterName;
     }
 
-    public IRace GetFighterRace() 
+    private IRace GetFighterRace() 
     {
         Console.WriteLine( Messages.AvailableRaces );
         Console.WriteLine( Messages.ChooseFighterRace );
 
         string? race = Console.ReadLine().ToLower();
+        RaceFabric raceFabric = new RaceFabric();
 
         if ( string.IsNullOrEmpty( race ) )
         {
@@ -38,13 +50,15 @@ internal class UI
             GetFighterRace();
         }
 
-        return ChooseRace(race);
+        return raceFabric.ChooseRace(race);
     }
 
-    public IWeapon GetFighterWeapon()
+    private IWeapon GetFighterWeapon()
     {
         Console.WriteLine( Messages.AvailableWeaponsQuality );
         Console.WriteLine( Messages.ChooseFighterWeapon);
+
+        WeaponFabric weaponFabric = new WeaponFabric();
 
         string? qualityOfWeapon = Console.ReadLine().ToLower();
 
@@ -55,15 +69,16 @@ internal class UI
             GetFighterWeapon();
         }
 
-        WeaponFabric weaponFabric = new WeaponFabric();
         return weaponFabric.ChooseQualityOfWeapon(qualityOfWeapon);
 
     }
 
-    public IArmor GetFighterArmor()
+    private IArmor GetFighterArmor()
     {
         Console.WriteLine( Messages.AvailableArmorsQuality );
         Console.WriteLine( Messages.ChooseFighterArmor );
+
+        ArmorFabric armorFabric = new ArmorFabric();
 
         string? qualityOfArmor = Console.ReadLine().ToLower();
 
@@ -74,8 +89,27 @@ internal class UI
             GetFighterArmor();
         }
 
-        ArmorFabric armorFabric = new ArmorFabric();
         return armorFabric.ChooseQualityOfArmor( qualityOfArmor );
+
+    }
+
+    private IClass GetFighterClass()
+    {
+        Console.WriteLine( Messages.AvailableClasses );
+        Console.WriteLine( Messages.ChooseFighterClass );
+
+        ClassFabric classFabric = new ClassFabric();
+
+        string? fighterClass = Console.ReadLine().ToLower();
+
+        if ( string.IsNullOrEmpty( fighterClass ) )
+        {
+            Console.WriteLine( Messages.NullOrEmptyClassError );
+
+            GetFighterArmor();
+        }
+
+        return classFabric.ChooseFighterClass( fighterClass );
 
     }
 
@@ -83,34 +117,5 @@ internal class UI
     {
         Console.ReadKey();
         Console.Clear();
-    }
-
-
-
-    private IRace ChooseRace( string race )
-    {
-        switch ( race )
-        {
-            case "human":
-                return new Human();
-
-            case "dwarf":
-                return new Dwarf();
-
-            case "angel":
-                return new Angel();
-
-            case "demon":
-                return new Demon();
-
-            case "werewolf":
-                return new Werewolf();
-
-            case "vampire":
-                return new Vampire();
-
-            default:
-                return new Human();
-        }
-    }
+    } 
 }

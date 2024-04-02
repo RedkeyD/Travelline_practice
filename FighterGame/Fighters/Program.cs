@@ -13,16 +13,18 @@ public class Program
             ui.GetFighterName(), 
             ui.GetFighterRace(), 
             ui.GetFighterWeapon(), 
-            ui.GetFighterArmor() );
+            ui.GetFighterArmor(),
+            ui.GetFighterClass() );
 
-        Console.WriteLine( Messages.G );
+        Console.WriteLine( Messages.StartFight );
         ui.Clear();
 
         var secondFighter = new Fighter(
             ui.GetFighterName(),
             ui.GetFighterRace(),
             ui.GetFighterWeapon(),
-            ui.GetFighterArmor() );
+            ui.GetFighterArmor(),
+            ui.GetFighterClass() );
 
         Console.WriteLine( Messages.StartFight );
         ui.Clear();

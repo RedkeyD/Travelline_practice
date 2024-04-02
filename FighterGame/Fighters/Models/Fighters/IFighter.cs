@@ -1,4 +1,5 @@
 ﻿using Fighters.Models.Armors;
+using Fighters.Models.Classes;
 using Fighters.Models.Races;
 using Fighters.Models.Weapons;
 
@@ -14,6 +15,7 @@ public interface IFighter
     public IWeapon Weapon { get; }
     public IRace Race { get; }
     public IArmor Armor { get; }
+    public IClass Class { get; }
 
     public void TakeDamage(int damage);
     public int CalculateDamage();
