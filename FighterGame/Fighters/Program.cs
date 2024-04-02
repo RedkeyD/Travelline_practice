@@ -8,15 +8,24 @@ public class Program
     public static void Main()
     {
         UI ui = new UI();
-        Messages messages = new Messages();
 
-        var firstFighter = new Fighter( ui.GetFighterName(), ui.GetFighterRace(), ui.GetFighterWeapon(), ui.GetFighterArmor() );
-        Console.WriteLine( messages.FighterCreatedMessage );
-        ui.ClearUI();
+        var firstFighter = new Fighter( 
+            ui.GetFighterName(), 
+            ui.GetFighterRace(), 
+            ui.GetFighterWeapon(), 
+            ui.GetFighterArmor() );
 
-        var secondFighter = new Fighter(ui.GetFighterName(), ui.GetFighterRace(), ui.GetFighterWeapon(), ui.GetFighterArmor() );
-        Console.WriteLine( messages.StartFightMessage );
-        ui.ClearUI();
+        Console.WriteLine( Messages.G );
+        ui.Clear();
+
+        var secondFighter = new Fighter(
+            ui.GetFighterName(),
+            ui.GetFighterRace(),
+            ui.GetFighterWeapon(),
+            ui.GetFighterArmor() );
+
+        Console.WriteLine( Messages.StartFight );
+        ui.Clear();
 
         var master = new GameMaster();
         var winner = master.PlayAndGetWinner( firstFighter, secondFighter );

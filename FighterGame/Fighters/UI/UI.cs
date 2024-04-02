@@ -7,17 +7,16 @@ using Fighters.Models.Weapons;
 namespace Fighters;
 internal class UI
 {
-    Messages messages = new Messages();
 
     public string GetFighterName()
     {
-        Console.WriteLine( messages.CreateFighterNameMessage );
+        Console.WriteLine( Messages.CreateFighterName );
 
         string? fighterName = Console.ReadLine();
 
         if (string.IsNullOrEmpty( fighterName ) )
         {
-            Console.WriteLine( messages.NullOrEmptyNameErrorMessage );
+            Console.WriteLine( Messages.NullOrEmptyNameError);
 
             GetFighterName();
         }
@@ -27,14 +26,14 @@ internal class UI
 
     public IRace GetFighterRace() 
     {
-        Console.WriteLine( messages.AvailableRacesMessage );
-        Console.WriteLine( messages.ChooseFighterRaceMessage );
+        Console.WriteLine( Messages.AvailableRaces );
+        Console.WriteLine( Messages.ChooseFighterRace );
 
         string? race = Console.ReadLine().ToLower();
 
         if ( string.IsNullOrEmpty( race ) )
         {
-            Console.WriteLine( messages.NullOrEmptyRaceErrorMessage );
+            Console.WriteLine( Messages.NullOrEmptyRaceError );
 
             GetFighterRace();
         }
@@ -44,81 +43,49 @@ internal class UI
 
     public IWeapon GetFighterWeapon()
     {
-        Console.WriteLine( messages.AvailableWeaponsQualityMessage );
-        Console.WriteLine( messages.ChooseFighterWeaponMessage );
+        Console.WriteLine( Messages.AvailableWeaponsQuality );
+        Console.WriteLine( Messages.ChooseFighterWeapon);
 
         string? qualityOfWeapon = Console.ReadLine().ToLower();
 
         if ( string.IsNullOrEmpty( qualityOfWeapon ) )
         {
-            Console.WriteLine( messages.NullOrEmptyWeaponErrorMessage );
+            Console.WriteLine( Messages.NullOrEmptyWeaponError );
 
             GetFighterWeapon();
         }
 
-        return ChooseQualityOfWeapon(qualityOfWeapon);
+        WeaponFabric weaponFabric = new WeaponFabric();
+        return weaponFabric.ChooseQualityOfWeapon(qualityOfWeapon);
 
     }
 
     public IArmor GetFighterArmor()
     {
-        Console.WriteLine( messages.AvailableArmorsQualityMessage );
-        Console.WriteLine( messages.ChooseFighterArmorMessage );
+        Console.WriteLine( Messages.AvailableArmorsQuality );
+        Console.WriteLine( Messages.ChooseFighterArmor );
 
         string? qualityOfArmor = Console.ReadLine().ToLower();
 
         if ( string.IsNullOrEmpty( qualityOfArmor ) )
         {
-            Console.WriteLine( messages.NullOrEmptyWeaponErrorMessage );
+            Console.WriteLine( Messages.NullOrEmptyWeaponError );
 
             GetFighterArmor();
         }
 
-        return ChooseQualityOfArmor( qualityOfArmor );
+        ArmorFabric armorFabric = new ArmorFabric();
+        return armorFabric.ChooseQualityOfArmor( qualityOfArmor );
 
     }
 
-    public void ClearUI()
+    public void Clear()
     {
         Console.ReadKey();
         Console.Clear();
     }
 
-    private IArmor ChooseQualityOfArmor( string qualityOfArmor )
-    {
-        switch ( qualityOfArmor )
-        {
-            case "low":
-                return new LowQualityArmor();
 
-            case "average":
-                return new AverageQualityArmor();
-
-            case "high":
-                return new HighQualityArmor();
-
-            default:
-                return new LowQualityArmor();
-        }
-    }
-
-    private IWeapon ChooseQualityOfWeapon( string qualityOfWeapon )
-    {
-        switch ( qualityOfWeapon )
-        {
-            case "low":
-                return new LowQualityWeapon();
-
-            case "average":
-                return new AverageQualityWeapon();
-
-            case "high":
-                return new HighQualityWeapon();
-
-            default:
-                return new LowQualityWeapon();
-        }
-    }
 
     private IRace ChooseRace( string race )
     {
