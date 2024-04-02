@@ -8,7 +8,6 @@ using CarFactory.Models.WheelPosition;
 namespace CarFactory;
 public class FactoryOfCar
 {
-    public FactoryOfCar() { }
     public ICar CreateCar(
         string name,
         IColour colour,
