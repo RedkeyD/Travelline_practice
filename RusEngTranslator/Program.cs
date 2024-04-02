@@ -12,7 +12,7 @@
         TranslationLoop( translator );
     }
 
-    static void TranslationLoop(Translator translator)
+    static void TranslationLoop( Translator translator )
     {
         Console.WriteLine( "Enter a word to translate (Type exit to leave a program): " );
 
@@ -32,10 +32,7 @@
 
         string translatedWord = translator.TranslateWord( wordToTranslate );
 
-        if ( translatedWord == null )
-            Console.WriteLine( "Translations not found" );
-        else
-            Console.WriteLine( $"Tranlated word: { translatedWord}" );
+        Console.WriteLine( $"Tranlated word: { translatedWord}" );
 
         TranslationLoop( translator );
     }

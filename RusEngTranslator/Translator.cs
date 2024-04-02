@@ -6,7 +6,7 @@
     private string[] _lines = null;
     private string _filePath = null;
 
-    public Translator(string filePath) 
+    public Translator( string filePath ) 
     {
         _filePath = filePath;
     }
@@ -66,6 +66,8 @@
         {
             translatedWord = _russianToEnglishDictionary[ wordToTranslate ];
         }
+
+        translatedWord = "Translation not found";
 
         return translatedWord;
     }
