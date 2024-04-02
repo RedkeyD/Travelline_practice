@@ -6,14 +6,10 @@ public class TransmissionFabric
     {
         switch ( transmission )
         {
-            case "manual":
-                return new Manual();
-            case "automatic":
-                return new Automatic();
-            case "semiautomatic":
-                return new SemiAutomatic();
-            default:
-                return new Manual();
+            case "manual": return new Manual();
+            case "automatic": return new Automatic();
+            case "semiautomatic": return new SemiAutomatic();
+            default: return new Manual();
         }
     }
 }
