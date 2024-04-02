@@ -5,6 +5,7 @@ using CarFactory.Models.Transmissions;
 using CarFactory.Models.WheelPosition;
 
 namespace CarFactory.UI;
+
 public interface IUserInterface
 {
     BodyFabric BodyFabric { get; }
