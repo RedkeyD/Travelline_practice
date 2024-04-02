@@ -2,5 +2,6 @@
 
 public class BatteryElectricMotor : IEngine
 {
-    public int MaxSpeed { get; } = 320;
+    public int Speed { get; } = 320;
+    public string Name { get; } = "Аккумуляторный электромотор";
 }

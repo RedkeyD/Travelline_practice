@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace CarFactory.Models.Engines;
 public interface IEngine
 {
-    int MaxSpeed { get; }
+    public int Speed { get; }
+    public string Name { get; }
 }

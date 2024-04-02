@@ -7,6 +7,5 @@ using System.Threading.Tasks;
 namespace CarFactory.Models.Colours;
 public interface IColour
 {
-    string Colour { get; }
+    string Name { get; }
 }
-

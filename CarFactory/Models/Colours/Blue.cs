@@ -2,6 +2,5 @@
 
 public class Blue : IColour
 {
-    public string Colour { get; } = "Blue";
+    public string Name { get; } = "Синий";
 }
-
