@@ -6,14 +6,8 @@ using CarFactory.Models.WheelPosition;
 
 namespace CarFactory.UI;
 
-public interface IUserInterface
+public interface ICarUserInterface
 {
-    BodyFabric BodyFabric { get; }
-    ColourFabric ColourFabric { get; }
-    EngineFabric EngineFabric { get; }
-    TransmissionFabric TransmissionFabric { get; }
-    WheelPositionFabric WheelPositionFabric { get; }
-
     string GetName();
 
     IBody GetBody();

@@ -11,7 +11,7 @@ class Program
 {
     static void Main( string[] args )
     {
-        CarConsole carConsole = new CarConsole();
+        CarConsoleUI carConsole = new CarConsoleUI();
         FactoryOfCar carFactory = new FactoryOfCar();
 
         string carName = carConsole.GetName();
@@ -23,6 +23,6 @@ class Program
 
         ICar car = carFactory.CreateCar( carName, carColour, wheelPosition, carEngine, carTransmission, carBody );
 
-        Console.WriteLine(car.ToString());
+        Console.WriteLine( car.ToString() );
     }
 }

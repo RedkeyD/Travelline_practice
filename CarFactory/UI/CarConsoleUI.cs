@@ -6,17 +6,16 @@ using CarFactory.Models.WheelPosition;
 
 namespace CarFactory.UI;
 
-public class CarConsole : IUserInterface
+public class CarConsoleUI : ICarUserInterface
 {
-    public BodyFabric BodyFabric { get; private set; }
-    public ColourFabric ColourFabric { get; private set; }
-    public EngineFabric EngineFabric { get; private set; }
-    public TransmissionFabric TransmissionFabric { get; private set; }
-    public WheelPositionFabric WheelPositionFabric { get; private set; }
+    private BodyFabric BodyFabric { get; }
+    private ColourFabric ColourFabric { get; }
+    private EngineFabric EngineFabric { get; }
+    private TransmissionFabric TransmissionFabric { get; }
+    private WheelPositionFabric WheelPositionFabric { get; }
 
-    public CarConsole()
+    public CarConsoleUI()
     {
-
         BodyFabric = new BodyFabric();
         ColourFabric = new ColourFabric();
         EngineFabric = new EngineFabric();
@@ -27,7 +26,7 @@ public class CarConsole : IUserInterface
     public string GetName()
     {
         string promptCarName = "Enter car name: ";
-        string carName = GetInput(promptCarName);
+        string carName = GetInput( promptCarName );
 
         return carName;
     }
@@ -35,51 +34,51 @@ public class CarConsole : IUserInterface
     public IBody GetBody()
     {
         string promptCarBody = "Currently we have these body types: \n1.Coupe \n2.Minivan \n3.Sedan \n\nEnter the type you like from these body types: ";
-        string carBodyStr = GetInput(promptCarBody);
+        string carBodyStr = GetInput( promptCarBody );
 
-        return BodyFabric.ChooseBody(carBodyStr);
+        return BodyFabric.ChooseBody( carBodyStr );
     }
 
     public IColour GetColour()
     {
         string promptCarColour = "Currently we have these colours: \n1.Blue \n2.Black \n3.Red \n\n Enter the colour you like from these colours: ";
-        string carColourStr = GetInput(promptCarColour);
+        string carColourStr = GetInput( promptCarColour );
 
-        return ColourFabric.ChooseColour(carColourStr);
+        return ColourFabric.ChooseColour( carColourStr );
     }
 
     public IEngine GetEngine()
     {
         string promptCarEngine = "Currently we have these engines: \n1.Diesel \n2.Gasoline \n3.ElectricMotor \n\n Enter the engine you like from these engines: ";
-        string carEngineStr = GetInput(promptCarEngine);
+        string carEngineStr = GetInput( promptCarEngine );
 
-        return EngineFabric.ChooseEngine(carEngineStr);
+        return EngineFabric.ChooseEngine( carEngineStr );
     }
 
     public ITransmission GetTransmission()
     {
         string promptCarTransmission = "Currently we have these transmissions: \n1.Manual \n2.Automatic \n3.Semiautomatic \n\nEnter the transmission you like from these transmissions: ";
-        string carTransmissionStr = GetInput(promptCarTransmission);
+        string carTransmissionStr = GetInput( promptCarTransmission );
 
-        return TransmissionFabric.ChooseTransmission(carTransmissionStr);
+        return TransmissionFabric.ChooseTransmission( carTransmissionStr );
     }
 
     public IWheelPosition GetWheelPosition()
     {
         string promptCarWheelPosition = "Currently we have these wheel positions: \n1.Left \n2.Right \n\nEnter the wheel position you like from these positions: ";
-        string carWheelPositionStr = GetInput(promptCarWheelPosition);
+        string carWheelPositionStr = GetInput( promptCarWheelPosition );
 
-        return WheelPositionFabric.ChooseWheelPosition(carWheelPositionStr);
+        return WheelPositionFabric.ChooseWheelPosition( carWheelPositionStr );
     }
 
-    public string GetInput(string promptMessage)
+    public string GetInput( string promptMessage )
     {
-        Console.WriteLine(promptMessage);
+        Console.WriteLine( promptMessage );
         string input = Console.ReadLine();
 
-        while (string.IsNullOrEmpty(input))
+        while ( string.IsNullOrEmpty( input ) )
         {
-            Console.WriteLine("Error: Input cannot be empty. Please enter a valid value.");
+            Console.WriteLine( "Error: Input cannot be empty. Please enter a valid value." );
             input = Console.ReadLine();
         }
 

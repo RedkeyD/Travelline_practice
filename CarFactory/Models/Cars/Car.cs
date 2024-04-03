@@ -9,8 +9,8 @@ namespace CarFactory.Models.Cars;
 public class Car : ICar
 {
     public string Name { get; }
-    public int Speed => Engine.Speed;
-    public int NumberOfGears => Transmission.NumberOfGears;
+    private int speed => Engine.Speed;
+    private int numberOfGears => Transmission.NumberOfGears;
 
     public IColour Colour { get; }
     public IWheelPosition WheelPosition { get; }
@@ -36,7 +36,7 @@ public class Car : ICar
 
     public override string ToString()
     {
-        return $"Машина : {Name}\nКоробка передач : {Transmission.Name}\nКоличество передач : {NumberOfGears}\nДвигатель : {Engine.Name}\nКузов : {Body.Name}" +
-                $"\nМаксимальная скорость : {Speed}\nЦвет : {Colour.Name}\nПозиция руля : {WheelPosition.Name}";
+        return $"Машина: {Name}\nКоробка передач: {Transmission.Name}\nКоличество передач: {numberOfGears}\nДвигатель: {Engine.Name}\nКузов: {Body.Name}" +
+                $"\nМаксимальная скорость: {speed}\nЦвет: {Colour.Name}\nПозиция руля: {WheelPosition.Name}";
     }
 }

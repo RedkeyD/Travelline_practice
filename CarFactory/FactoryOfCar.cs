@@ -18,6 +18,6 @@ public class FactoryOfCar
         IBody body
         )
     {
-        return new Car(name, colour, wheelPosition, engine, transmission, body);
+        return new Car( name, colour, wheelPosition, engine, transmission, body );
     }
 }

@@ -8,12 +8,9 @@ namespace CarFactory.Models.Cars;
 public interface ICar
 {
     public string Name { get; }
-    public int Speed { get; }
-    public int NumberOfGears { get; }
 
     public IColour Colour { get; }
     public IWheelPosition WheelPosition { get; }
     public IEngine Engine { get; } 
     public ITransmission Transmission { get; }
-
 }
