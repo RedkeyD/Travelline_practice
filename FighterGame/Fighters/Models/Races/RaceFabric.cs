@@ -6,13 +6,17 @@ public class RaceFabric
     {
         switch ( race )
         {
-            case "human": return new Human();
+            case "human":
+                return new Human();
 
-            case "werewolf": return new Werewolf();
+            case "werewolf":
+                return new Werewolf();
 
-            case "vampire": return new Vampire();
+            case "vampire":
+                return new Vampire();
 
-            default: return new Human();
+            default:
+                return new Human();
         }
     }
 }

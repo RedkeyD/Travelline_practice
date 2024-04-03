@@ -7,18 +7,18 @@ namespace Fighters.Models.Fighters;
 
 public class Fighter : IFighter
 {
-    public int MaxHealth => Race.Health + Class.Health;
+    private int MaxHealth => Race.Health + Class.Health;
     public int CurrentHealth { get; private set; }
-    public int Speed => Race.Speed;
+    private int Speed => Race.Speed;
 
     public string Name { get; }
 
     public IRace Race { get; }
-    public IWeapon Weapon { get; } 
-    public IArmor Armor { get; } 
+    public IWeapon Weapon { get; }
+    public IArmor Armor { get; }
     public IClass Class { get; }
 
-    public Fighter( string name, IRace race, IWeapon weapon, IArmor armor, IClass fighterClass)
+    public Fighter( string name, IRace race, IWeapon weapon, IArmor armor, IClass fighterClass )
     {
         Name = name;
         Race = race;

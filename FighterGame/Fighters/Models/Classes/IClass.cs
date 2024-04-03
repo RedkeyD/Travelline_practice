@@ -1,4 +1,5 @@
 ﻿namespace Fighters.Models.Classes;
+
 public interface IClass
 {
     int Health { get; }

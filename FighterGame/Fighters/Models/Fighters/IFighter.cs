@@ -7,9 +7,7 @@ namespace Fighters.Models.Fighters;
 
 public interface IFighter
 {
-    public int MaxHealth { get; }
     public int CurrentHealth { get; }
-    public int Speed { get; }
 
     public string Name { get; }
 
@@ -18,6 +16,6 @@ public interface IFighter
     public IArmor Armor { get; }
     public IClass Class { get; }
 
-    public void TakeDamage(int damage);
+    public void TakeDamage( int damage );
     public int CalculateDamage();
 }

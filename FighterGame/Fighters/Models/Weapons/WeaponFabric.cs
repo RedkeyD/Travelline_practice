@@ -6,13 +6,17 @@ public class WeaponFabric
     {
         switch ( Weapon )
         {
-            case "sword": return new Sword();
+            case "sword":
+                return new Sword();
 
-            case "Axe": return new Axe();
+            case "Axe":
+                return new Axe();
 
-            case "Spear": return new Spear();
+            case "Spear":
+                return new Spear();
 
-            default: return new NoWeapon();
+            default:
+                return new NoWeapon();
         }
     }
 }
