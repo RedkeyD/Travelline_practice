@@ -12,7 +12,6 @@ class Program
     static void Main( string[] args )
     {
         CarConsoleUI carConsole = new CarConsoleUI();
-        FactoryOfCar carFactory = new FactoryOfCar();
 
         string carName = carConsole.GetName();
         IColour carColour = carConsole.GetColour();
@@ -21,6 +20,7 @@ class Program
         ITransmission carTransmission = carConsole.GetTransmission();
         IBody carBody = carConsole.GetBody();
 
+        FactoryOfCar carFactory = new FactoryOfCar();
         ICar car = carFactory.CreateCar( carName, carColour, wheelPosition, carEngine, carTransmission, carBody );
 
         Console.WriteLine( car.ToString() );

@@ -8,11 +8,11 @@ namespace CarFactory.UI;
 
 public class CarConsoleUI : ICarUserInterface
 {
-    private BodyFabric BodyFabric { get; }
-    private ColourFabric ColourFabric { get; }
-    private EngineFabric EngineFabric { get; }
-    private TransmissionFabric TransmissionFabric { get; }
-    private WheelPositionFabric WheelPositionFabric { get; }
+    private BodyFabric BodyFabric;
+    private ColourFabric ColourFabric;
+    private EngineFabric EngineFabric;
+    private TransmissionFabric TransmissionFabric;
+    private WheelPositionFabric WheelPositionFabric;
 
     public CarConsoleUI()
     {
