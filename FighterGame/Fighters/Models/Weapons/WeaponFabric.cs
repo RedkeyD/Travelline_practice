@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Fighters.Models.Weapons;
 
-namespace Fighters.Models.Weapons;
 public class WeaponFabric
 {
-    public IWeapon ChooseQualityOfWeapon( string qualityOfWeapon )
+    public IWeapon ChooseWeapon( string Weapon )
     {
-        switch ( qualityOfWeapon )
+        switch ( Weapon )
         {
-            case "low":
-                return new LowQualityWeapon();
+            case "sword": return new Sword();
 
-            case "average":
-                return new AverageQualityWeapon();
+            case "Axe": return new Axe();
 
-            case "high":
-                return new HighQualityWeapon();
+            case "Spear": return new Spear();
 
-            default:
-                return new LowQualityWeapon();
+            default: return new NoWeapon();
         }
     }
 }

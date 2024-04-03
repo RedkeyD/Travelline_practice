@@ -20,16 +20,6 @@ public class Messages
 
     public const string AvailableClasses = "Now choose fighter class Milord. \n\nCurrently available classes: \n1.Warrior \n2.Knight";
 
-    public const string NullOrEmptyNameError = "Milord, you forgot to name your fighter.";
-
-    public const string NullOrEmptyWeaponError = "Milord, you forgot to choose a weapon for your fighter.";
-
-    public const string NullOrEmptyArmorError = "Milord, you forgot to choose an armor for your fighter.";
-
-    public const string NullOrEmptyRaceError = "Milord, you forgot to choose a race for your fighter.";
-
-    public const string NullOrEmptyClassError = "Milord, you forgot to choose a class for your fighter.";
-
     public const string FighterCreated = "Your fighter was created Milord! Now we can create another fighter, its opponent!";
 
     public const string StartFight = "Now they can fight Milord!";

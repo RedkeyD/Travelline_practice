@@ -1,6 +1,6 @@
 ﻿namespace Fighters.Models.Weapons;
 
-public class LowQualityWeapon : IWeapon
+public class Axe : IWeapon
 {
     public int Damage { get; } = 15;
 }

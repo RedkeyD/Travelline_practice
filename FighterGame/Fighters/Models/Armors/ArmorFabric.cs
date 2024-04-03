@@ -1,27 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fighters.Models.Armors;
+﻿namespace Fighters.Models.Armors;
 public class ArmorFabric
 {
-    public IArmor ChooseQualityOfArmor( string qualityOfArmor )
+    public IArmor ChooseArmor( string Armor )
     {
-        switch ( qualityOfArmor )
+        switch ( Armor )
         {
-            case "low":
-                return new LowQualityArmor();
+            case "helmet": return new Helmet();
 
-            case "average":
-                return new AverageQualityArmor();
+            case "breastplate": return new Breastplate();
 
-            case "high":
-                return new HighQualityArmor();
+            case "gauntlets": return new Gauntlets();
 
-            default:
-                return new LowQualityArmor();
+            default: return new NoArmor();
         }
     }
 }
