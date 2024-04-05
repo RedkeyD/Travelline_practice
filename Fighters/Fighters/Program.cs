@@ -14,6 +14,7 @@ public class Program
 
         fighterConsoleUI.DetailsOfFighters( fighters );
 
-        Console.ReadKey();
+        GameMaster gameMaster = new GameMaster();
+        gameMaster.PlayAndGetWinner( fighters );
     }
 }

@@ -119,4 +119,3 @@ public class FighterConsoleUI : IFighterUserUnterface
         return num;
     }
 }
-

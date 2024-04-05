@@ -9,10 +9,10 @@ public class WeaponFabric
             case "sword":
                 return new Sword();
 
-            case "Axe":
+            case "axe":
                 return new Axe();
 
-            case "Spear":
+            case "spear":
                 return new Spear();
 
             default:
