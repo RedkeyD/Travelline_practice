@@ -8,13 +8,10 @@ public class RaceFabric
         {
             case "human":
                 return new Human();
-
             case "werewolf":
                 return new Werewolf();
-
             case "vampire":
                 return new Vampire();
-
             default:
                 return new Human();
         }
