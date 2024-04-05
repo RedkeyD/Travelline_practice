@@ -106,6 +106,6 @@ public class GameMaster
     {
         Random random = new Random();
         int chance = random.Next( 1, 101 ); // Generates a random integer between 1 and 100
-        return chance <= 10; // 10% chance of critical hit (adjust as needed)
+        return chance <= 10; // 10% chance of critical hit 
     }
 }
