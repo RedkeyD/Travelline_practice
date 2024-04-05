@@ -2,6 +2,8 @@
 
 public class Human : IRace
 {
+    public string Name { get; } = "Human";
+
     public int Speed { get; } = 9;
 
     public int Damage { get; } = 11;

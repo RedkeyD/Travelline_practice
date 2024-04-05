@@ -2,5 +2,6 @@
 
 public interface IArmor
 {
+    string Name { get; }
     public int Armor { get; }
 }

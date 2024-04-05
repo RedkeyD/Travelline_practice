@@ -2,6 +2,8 @@
 
 public class Werewolf : IRace
 {
+    public string Name { get; } = "Werewolf";
+
     public int Speed { get; } = 12;
 
     public int Damage { get; } = 20;

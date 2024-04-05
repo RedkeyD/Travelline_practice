@@ -2,6 +2,7 @@
 
 public class Vampire : IRace
 {
+    public string Name { get; } = "Vampire";
     public int Speed { get; } = 15;
 
     public int Damage { get; } = 25;

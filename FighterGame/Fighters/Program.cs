@@ -8,11 +8,12 @@ public class Program
     {
         FighterConsoleUI fighterConsoleUI = new FighterConsoleUI();
 
-        List<IFighter> fighters = new List<IFighter>();
+        int numOfFighters = fighterConsoleUI.GetNumInput( Messages.AskNumOfFighters );
 
-        var master = new GameMaster();
-        var winner = master.PlayAndGetWinner( fighters[ 0 ], fighters[ 1 ] );
+        List<IFighter> fighters = fighterConsoleUI.CreateFighters( numOfFighters );
 
-        Console.WriteLine( $"Winner {winner.Name}" );
+        fighterConsoleUI.DetailsOfFighters( fighters );
+
+        Console.ReadKey();
     }
 }

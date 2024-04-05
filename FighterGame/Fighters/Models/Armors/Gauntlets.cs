@@ -2,5 +2,6 @@
 
 public class Gauntlets : IArmor
 {
+    public string Name { get; } = "Gauntlets";
     public int Armor { get; } = 15;
 }

@@ -8,6 +8,9 @@ namespace Fighters.Models.Fighters;
 public interface IFighter
 {
     public int CurrentHealth { get; }
+    public int Speed { get; }
+    public int Damage { get; }
+    public int Defense { get; }
 
     public string Name { get; }
 
@@ -16,6 +19,5 @@ public interface IFighter
     public IArmor Armor { get; }
     public IClass Class { get; }
 
-    public void TakeDamage( int damage );
-    public int CalculateDamage();
+    public void TakeDamage( int damage, int armor );
 }

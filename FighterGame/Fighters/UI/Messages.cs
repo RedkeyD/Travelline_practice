@@ -16,9 +16,11 @@ public class Messages
     public const string AvailableClasses = "Now choose fighter class Milord."
         + "\n\nCurrently available classes: \n1.Warrior \n2.Knight \n\nEnter your fighter class, Milord: ";
 
-    public const string FighterCreated = "Your fighter was created Milord! Now we can create another fighter!";
+    public const string FighterCreated = "Your fighter was created Milord!\n";
 
     public const string NullOrEmptyError = "Error: Input cannot be empty. Please enter a valid value.";
+
+    public const string AskNumOfFighters = "How many fighters do you want to create?";
 
     public const string StartFight = "Now they can fight Milord!";
 }

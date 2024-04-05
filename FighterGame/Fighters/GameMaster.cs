@@ -13,6 +13,7 @@ public class GameMaster
 
             // Determine which fighter attacks first based on speed
             IFighter attacker, defender;
+
             if ( firstFighter.Speed >= secondFighter.Speed )
             {
                 attacker = firstFighter;
@@ -42,8 +43,10 @@ public class GameMaster
 
     private bool FightAndCheckIfOpponentDead( IFighter attacker, IFighter defender )
     {
-        int damage = attacker.CalculateDamage();
-        defender.TakeDamage( damage );
+        int damage = attacker.Damage;
+        int defense = defender.Defense;
+
+        defender.TakeDamage( damage, defense );
 
         Console.WriteLine(
             $"Fighter {defender.Name} takes {damage} damage. " +
