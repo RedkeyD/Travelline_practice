@@ -27,7 +27,7 @@ public class GameMaster
 
         while ( fighters.Count > 1 )
         {
-            Console.WriteLine( $"Number of fighters remaining: {fighters.Count}" );
+            _fighterUserInterface.Print( $"Number of fighters remaining: {fighters.Count}" );
 
             for ( int i = 0; i < fighters.Count - 1; i++ )
             {
@@ -47,12 +47,12 @@ public class GameMaster
 
     private void AttackEachOther( IFighter fighter1, IFighter fighter2 )
     {
-        Console.WriteLine( $"Fight between {fighter1.Name} and {fighter2.Name}" );
+        _fighterUserInterface.Print( $"Fight between {fighter1.Name} and {fighter2.Name}" );
 
         Attack( fighter1, fighter2 );
         Attack( fighter2, fighter1 );
 
-        Console.WriteLine();
+        _fighterUserInterface.Print(" ");
     }
 
     private void Attack( IFighter attacker, IFighter defender )
@@ -63,7 +63,7 @@ public class GameMaster
 
         if ( IsCriticalHit( attacker.Weapon.CriticalHitChance ) )
         {
-            Console.WriteLine( "Critical Hit!" );
+            _fighterUserInterface.Print( "Critical Hit!" );
             baseDamage *= 2;
         }
 
@@ -71,7 +71,7 @@ public class GameMaster
 
         defender.TakeDamage( baseDamage, defense );
 
-        Console.WriteLine(
+        _fighterUserInterface.Print(
             $"Fighter {defender.Name} takes {baseDamage} damage. " +
             $"Current health: {defender.CurrentHealth}" );
     }

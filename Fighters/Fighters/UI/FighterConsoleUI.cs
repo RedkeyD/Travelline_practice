@@ -57,37 +57,12 @@ public class FighterConsoleUI : IFighterUserInterface
         return fighter;
     }
 
-    private string GetName()
+    public void Print( string promptMessage )
     {
-        string fighterName = GetInput( Messages.CreateFighterName );
-        return fighterName;
+        Console.WriteLine( promptMessage );
     }
 
-    private IArmor GetArmor()
-    {
-        string fighterArmor = GetInput( Messages.AvailableArmors );
-        return _armorFabric.ChooseArmor( fighterArmor );
-    }
-
-    private IWeapon GetWeapon()
-    {
-        string fighterWeapon = GetInput( Messages.AvailableWeapons );
-        return _weaponFabric.ChooseWeapon( fighterWeapon );
-    }
-
-    private IRace GetRace()
-    {
-        string fighterRace = GetInput( Messages.AvailableRaces );
-        return _raceFabric.ChooseRace( fighterRace );
-    }
-
-    private IClass GetClass()
-    {
-        string fighterClass = GetInput( Messages.AvailableClasses );
-        return _classFabric.ChooseFighterClass( fighterClass );
-    }
-
-    public string GetInput( string promptMessage )
+    public string Input( string promptMessage )
     {
         Console.WriteLine( promptMessage );
         string input = Console.ReadLine();
@@ -102,7 +77,7 @@ public class FighterConsoleUI : IFighterUserInterface
         return input.ToLower();
     }
 
-    public int GetNumOfFightersInput( string promptMessage )
+    public int IntInput( string promptMessage )
     {
         Console.WriteLine( promptMessage );
         string input = Console.ReadLine();
@@ -116,5 +91,35 @@ public class FighterConsoleUI : IFighterUserInterface
 
         Console.Clear();
         return num;
+    }
+
+    private string GetName()
+    {
+        string fighterName = Input( Messages.CreateFighterName );
+        return fighterName;
+    }
+
+    private IArmor GetArmor()
+    {
+        string fighterArmor = Input( Messages.AvailableArmors );
+        return _armorFabric.ChooseArmor( fighterArmor );
+    }
+
+    private IWeapon GetWeapon()
+    {
+        string fighterWeapon = Input( Messages.AvailableWeapons );
+        return _weaponFabric.ChooseWeapon( fighterWeapon );
+    }
+
+    private IRace GetRace()
+    {
+        string fighterRace = Input( Messages.AvailableRaces );
+        return _raceFabric.ChooseRace( fighterRace );
+    }
+
+    private IClass GetClass()
+    {
+        string fighterClass = Input( Messages.AvailableClasses );
+        return _classFabric.ChooseFighterClass( fighterClass );
     }
 }

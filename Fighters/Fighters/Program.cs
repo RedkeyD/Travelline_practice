@@ -9,7 +9,7 @@ public class Program
     {
         IFighterUserInterface fighterConsoleUI = new FighterConsoleUI();
 
-        int numOfFighters = fighterConsoleUI.GetNumOfFightersInput( Messages.AskNumOfFighters );
+        int numOfFighters = fighterConsoleUI.IntInput( Messages.AskNumOfFighters );
 
         List<IFighter> fighters = fighterConsoleUI.CreateFighters( numOfFighters );
 
