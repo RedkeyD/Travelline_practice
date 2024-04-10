@@ -2,15 +2,15 @@
 
 public class RaceFabric
 {
-    public IRace ChooseRace( string race )
+    public IRace ChooseRace( int race )
     {
         switch ( race )
         {
-            case "human":
+            case 1:
                 return new Human();
-            case "werewolf":
+            case 2:
                 return new Werewolf();
-            case "vampire":
+            case 3:
                 return new Vampire();
             default:
                 return new Human();

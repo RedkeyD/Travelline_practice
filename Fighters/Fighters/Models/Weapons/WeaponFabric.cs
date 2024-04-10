@@ -2,16 +2,16 @@
 
 public class WeaponFabric
 {
-    public IWeapon ChooseWeapon( string Weapon )
+    public IWeapon ChooseWeapon( int weapon )
     {
-        switch ( Weapon )
+        switch ( weapon )
         {
-            case "sword":
+            case 1:
                 return new Sword();
-            case "axe":
-                return new Axe();
-            case "spear":
+            case 2:
                 return new Spear();
+            case 3:
+                return new Axe();
             default:
                 return new NoWeapon();
         }

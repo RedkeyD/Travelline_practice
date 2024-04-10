@@ -15,9 +15,7 @@ public class Program
 
         fighterConsoleUI.DetailsOfFighters( fighters );
 
-        Random random = new Random();
-
-        GameMaster gameMaster = new GameMaster( random, fighterConsoleUI );
+        GameMaster gameMaster = new GameMaster( fighterConsoleUI );
         gameMaster.PlayAndGetWinner( fighters );
     }
 }

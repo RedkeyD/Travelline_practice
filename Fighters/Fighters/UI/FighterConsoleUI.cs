@@ -101,25 +101,25 @@ public class FighterConsoleUI : IFighterUserInterface
 
     private IArmor GetArmor()
     {
-        string fighterArmor = Input( Messages.AvailableArmors );
+        int fighterArmor = IntInput( Messages.AvailableArmors );
         return _armorFabric.ChooseArmor( fighterArmor );
     }
 
     private IWeapon GetWeapon()
     {
-        string fighterWeapon = Input( Messages.AvailableWeapons );
+        int fighterWeapon = IntInput( Messages.AvailableWeapons );
         return _weaponFabric.ChooseWeapon( fighterWeapon );
     }
 
     private IRace GetRace()
     {
-        string fighterRace = Input( Messages.AvailableRaces );
+        int fighterRace = IntInput( Messages.AvailableRaces );
         return _raceFabric.ChooseRace( fighterRace );
     }
 
     private IClass GetClass()
     {
-        string fighterClass = Input( Messages.AvailableClasses );
+        int fighterClass = IntInput( Messages.AvailableClasses );
         return _classFabric.ChooseFighterClass( fighterClass );
     }
 }

@@ -4,12 +4,11 @@ using Fighters.UI;
 namespace Fighters;
 public class GameMaster
 {
-    private Random _random;
+    private Random _random = new Random();
     private IFighterUserInterface _fighterUserInterface;
 
-    public GameMaster( Random random, IFighterUserInterface fighterUserInterface )
+    public GameMaster( IFighterUserInterface fighterUserInterface )
     {
-        _random = random;
         _fighterUserInterface = fighterUserInterface;
     }
 
@@ -34,23 +33,31 @@ public class GameMaster
                 IFighter firstFighter = fighters[ i ];
                 IFighter secondFighter = fighters[ _random.Next( i + 1, fighters.Count ) ];
 
-                AttackEachOther( firstFighter, secondFighter );
+                AttackEachOther( firstFighter, secondFighter, fighters );
             }
 
-
-            fighters.RemoveAll( fighter => fighter.CurrentHealth < 1 );
         }
 
         return fighters[ 0 ];
     }
-
-
-    private void AttackEachOther( IFighter fighter1, IFighter fighter2 )
+    private void AttackEachOther( IFighter fighter1, IFighter fighter2, List<IFighter> fighters )
     {
+        if ( fighter1.CurrentHealth <= 0 || fighter2.CurrentHealth <= 0 )
+        {
+            return;
+        }
+
         _fighterUserInterface.Print( $"Fight between {fighter1.Name} and {fighter2.Name}" );
 
         Attack( fighter1, fighter2 );
-        Attack( fighter2, fighter1 );
+
+        fighters.RemoveAll( f => f.CurrentHealth <= 0 );
+
+        if ( fighter2.CurrentHealth > 0 )
+        {
+            Attack( fighter2, fighter1 );
+            fighters.RemoveAll( f => f.CurrentHealth <= 0 );
+        }
 
         _fighterUserInterface.Print( " " );
     }
@@ -95,5 +102,3 @@ public class GameMaster
         return isCriticalHit;
     }
 }
-
-

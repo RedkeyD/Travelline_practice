@@ -2,16 +2,16 @@
 
 public class ArmorFabric
 {
-    public IArmor ChooseArmor( string Armor )
+    public IArmor ChooseArmor( int armor )
     {
-        switch ( Armor )
+        switch ( armor )
         {
-            case "helmet":
+            case 1:
                 return new Helmet();
-            case "breastplate":
-                return new Breastplate();
-            case "gauntlets":
+            case 2:
                 return new Gauntlets();
+            case 3:
+                return new Breastplate();
             default:
                 return new NoArmor();
         }
