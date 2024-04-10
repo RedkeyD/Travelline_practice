@@ -52,7 +52,7 @@ public class GameMaster
         Attack( fighter1, fighter2 );
         Attack( fighter2, fighter1 );
 
-        _fighterUserInterface.Print(" ");
+        _fighterUserInterface.Print( " " );
     }
 
     private void Attack( IFighter attacker, IFighter defender )
