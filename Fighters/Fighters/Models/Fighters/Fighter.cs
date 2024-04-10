@@ -13,7 +13,6 @@ public class Fighter : IFighter
     public int Speed => Race.Speed;
 
     public int CurrentHealth { get; private set; }
-
     public string Name { get; }
 
     public IArmor Armor { get; }
