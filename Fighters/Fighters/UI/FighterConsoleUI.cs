@@ -3,11 +3,10 @@ using Fighters.Models.Classes;
 using Fighters.Models.Fighters;
 using Fighters.Models.Races;
 using Fighters.Models.Weapons;
-using Fighters.UI;
 
-namespace Fighters;
+namespace Fighters.UI;
 
-public class FighterConsoleUI : IFighterUserUnterface
+public class FighterConsoleUI : IFighterUserInterface
 {
     private readonly RaceFabric _raceFabric;
     private readonly WeaponFabric _weaponFabric;
@@ -36,7 +35,7 @@ public class FighterConsoleUI : IFighterUserUnterface
 
     public void DetailsOfFighters( List<IFighter> fighters )
     {
-        Console.WriteLine( "Details of created fighters: \n" );
+        Console.WriteLine( Messages.FightersDetails );
 
         foreach ( var fighter in fighters )
         {
@@ -58,31 +57,31 @@ public class FighterConsoleUI : IFighterUserUnterface
         return fighter;
     }
 
-    public string GetName()
+    private string GetName()
     {
         string fighterName = GetInput( Messages.CreateFighterName );
         return fighterName;
     }
 
-    public IArmor GetArmor()
+    private IArmor GetArmor()
     {
         string fighterArmor = GetInput( Messages.AvailableArmors );
         return _armorFabric.ChooseArmor( fighterArmor );
     }
 
-    public IWeapon GetWeapon()
+    private IWeapon GetWeapon()
     {
         string fighterWeapon = GetInput( Messages.AvailableWeapons );
         return _weaponFabric.ChooseWeapon( fighterWeapon );
     }
 
-    public IRace GetRace()
+    private IRace GetRace()
     {
         string fighterRace = GetInput( Messages.AvailableRaces );
         return _raceFabric.ChooseRace( fighterRace );
     }
 
-    public IClass GetClass()
+    private IClass GetClass()
     {
         string fighterClass = GetInput( Messages.AvailableClasses );
         return _classFabric.ChooseFighterClass( fighterClass );
@@ -103,7 +102,7 @@ public class FighterConsoleUI : IFighterUserUnterface
         return input.ToLower();
     }
 
-    public int GetNumInput( string promptMessage )
+    public int GetNumOfFightersInput( string promptMessage )
     {
         Console.WriteLine( promptMessage );
         string input = Console.ReadLine();

@@ -1,4 +1,5 @@
 ﻿using Fighters.Models.Fighters;
+using Fighters.UI;
 
 namespace Fighters;
 
@@ -6,15 +7,17 @@ public class Program
 {
     public static void Main()
     {
-        FighterConsoleUI fighterConsoleUI = new FighterConsoleUI();
+        IFighterUserInterface fighterConsoleUI = new FighterConsoleUI();
 
-        int numOfFighters = fighterConsoleUI.GetNumInput( Messages.AskNumOfFighters );
+        int numOfFighters = fighterConsoleUI.GetNumOfFightersInput( Messages.AskNumOfFighters );
 
         List<IFighter> fighters = fighterConsoleUI.CreateFighters( numOfFighters );
 
         fighterConsoleUI.DetailsOfFighters( fighters );
 
-        GameMaster gameMaster = new GameMaster();
+        Random random = new Random();
+
+        GameMaster gameMaster = new GameMaster( random, fighterConsoleUI );
         gameMaster.PlayAndGetWinner( fighters );
     }
 }

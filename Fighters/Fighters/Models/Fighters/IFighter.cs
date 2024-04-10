@@ -11,7 +11,6 @@ public interface IFighter
     public int Speed { get; }
     public int Damage { get; }
     public int Defense { get; }
-
     public string Name { get; }
 
     public IWeapon Weapon { get; }

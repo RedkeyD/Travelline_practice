@@ -2,6 +2,8 @@
 
 public interface IWeapon
 {
-    string Name { get; }
+    public string Name { get; }
     public int Damage { get; }
+    public int CriticalHitChance { get; }
+
 }

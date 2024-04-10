@@ -14,7 +14,6 @@ public class Fighter : IFighter
 
     public int CurrentHealth { get; private set; }
 
-
     public string Name { get; }
 
     public IArmor Armor { get; }
@@ -47,7 +46,6 @@ public class Fighter : IFighter
 
     public void TakeDamage( int damage, int defense )
     {
-
         CurrentHealth -= damage - defense;
 
         if ( CurrentHealth < 0 )

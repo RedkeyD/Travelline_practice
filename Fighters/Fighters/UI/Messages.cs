@@ -1,4 +1,4 @@
-﻿namespace Fighters;
+﻿namespace Fighters.UI;
 
 public class Messages
 {
@@ -21,6 +21,8 @@ public class Messages
     public const string NullOrEmptyError = "Error: Input cannot be empty. Please enter a valid value.";
 
     public const string AskNumOfFighters = "How many fighters do you want to create?";
+
+    public const string FightersDetails = "Details of created fighters: \n";
 
     public const string StartFight = "Now they can fight Milord!";
 }

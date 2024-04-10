@@ -1,111 +1,99 @@
 ﻿using Fighters.Models.Fighters;
+using Fighters.UI;
 
 namespace Fighters;
-
 public class GameMaster
 {
+    private Random _random;
+    private IFighterUserInterface _fighterUserInterface;
+
+    public GameMaster( Random random, IFighterUserInterface fighterUserInterface )
+    {
+        _random = random;
+        _fighterUserInterface = fighterUserInterface;
+    }
+
     public IFighter PlayAndGetWinner( List<IFighter> fighters )
     {
+        if ( fighters == null || fighters.Count == 0 )
+        {
+            throw new ArgumentException( "The fighters list is empty." );
+        }
+
+        if ( fighters.Count == 1 )
+        {
+            return fighters[ 0 ];
+        }
+
         while ( fighters.Count > 1 )
         {
             Console.WriteLine( $"Number of fighters remaining: {fighters.Count}" );
 
-            // Organize duels between adjacent fighters
-            for ( int i = 0; i < fighters.Count - 1; i += 2 )
+            for ( int i = 0; i < fighters.Count - 1; i++ )
             {
                 IFighter firstFighter = fighters[ i ];
-                IFighter secondFighter = fighters[ i + 1 ];
+                IFighter secondFighter = fighters[ _random.Next( i + 1, fighters.Count ) ];
 
-                IFighter winner = Duel( firstFighter, secondFighter );
-
-                Console.WriteLine( $"Winner of the duel: {winner.Name}" );
-                Console.WriteLine();
+                AttackEachOther( firstFighter, secondFighter );
             }
 
-            // Remove defeated fighters
+
             fighters.RemoveAll( fighter => fighter.CurrentHealth < 1 );
         }
 
-        // Return the remaining fighter (the winner)
         return fighters[ 0 ];
     }
 
-    private IFighter Duel( IFighter firstFighter, IFighter secondFighter )
+
+    private void AttackEachOther( IFighter fighter1, IFighter fighter2 )
     {
-        Console.WriteLine( $"Duel between {firstFighter.Name} and {secondFighter.Name}" );
+        Console.WriteLine( $"Fight between {fighter1.Name} and {fighter2.Name}" );
 
-        int round = 1;
-        while ( true )
-        {
-            Console.WriteLine( $"Round {round++}." );
+        Attack( fighter1, fighter2 );
+        Attack( fighter2, fighter1 );
 
-            // Determine which fighter attacks first based on speed
-            IFighter attacker, defender;
-
-            if ( firstFighter.Speed >= secondFighter.Speed )
-            {
-                attacker = firstFighter;
-                defender = secondFighter;
-            }
-            else
-            {
-                attacker = secondFighter;
-                defender = firstFighter;
-            }
-
-            // Attacker fights defender
-            if ( FightAndCheckIfOpponentDead( attacker, defender ) )
-            {
-                return attacker;
-            }
-
-            // Defender fights attacker
-            if ( FightAndCheckIfOpponentDead( defender, attacker ) )
-            {
-                return defender;
-            }
-
-            Console.WriteLine();
-        }
+        Console.WriteLine();
     }
 
-    private bool FightAndCheckIfOpponentDead( IFighter attacker, IFighter defender )
+    private void Attack( IFighter attacker, IFighter defender )
     {
-        // Calculate damage as a random value within a range
-        double damageModifier = GetDamageModifier();
-        int damage = ( int )( attacker.Damage * damageModifier );
+        double damageModifier = CalculateDamageModifier();
 
-        // Check for critical damage
-        if ( IsCriticalHit() )
+        int baseDamage = ( int )( attacker.Damage * damageModifier );
+
+        if ( IsCriticalHit( attacker.Weapon.CriticalHitChance ) )
         {
             Console.WriteLine( "Critical Hit!" );
-            damage *= 2; // Double the damage for critical hits
+            baseDamage *= 2;
         }
 
         int defense = defender.Defense;
 
-        defender.TakeDamage( damage, defense );
+        defender.TakeDamage( baseDamage, defense );
 
         Console.WriteLine(
-            $"Fighter {defender.Name} takes {damage} damage. " +
+            $"Fighter {defender.Name} takes {baseDamage} damage. " +
             $"Current health: {defender.CurrentHealth}" );
-
-        return defender.CurrentHealth < 1;
     }
 
-    // Method to get a random damage modifier between -10% and +20%
-    private double GetDamageModifier()
+
+    private double CalculateDamageModifier()
     {
-        Random random = new Random();
-        double modifier = random.Next( -10, 21 ) / 100.0; // Generates a random integer between -10 and 20
-        return 1 + modifier; // Adding 1 ensures the modifier is between -0.1 and +0.2
+        int randomDamageModifierRange = _random.Next( -10, 21 );
+        double randomDamageModifierPercentage = randomDamageModifierRange / 100.0;
+        double finalDamageModifier = 1 + randomDamageModifierPercentage;
+
+        return finalDamageModifier;
     }
 
-    // Method to determine if the attack is a critical hit
-    private bool IsCriticalHit()
+
+    private bool IsCriticalHit( int weaponCriticalHitChance )
     {
-        Random random = new Random();
-        int chance = random.Next( 1, 101 ); // Generates a random integer between 1 and 100
-        return chance <= 10; // 10% chance of critical hit 
+        int randomNumber = _random.Next( 1, 101 );
+        bool isCriticalHit = randomNumber <= weaponCriticalHitChance;
+
+        return isCriticalHit;
     }
 }
+
+
