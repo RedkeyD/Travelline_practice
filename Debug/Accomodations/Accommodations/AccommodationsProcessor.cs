@@ -1,3 +1,4 @@
+using System.IO;
 using Accommodations.Commands;
 using Accommodations.Dto;
 
@@ -22,10 +23,8 @@ public static class AccommodationsProcessor
         Console.WriteLine( "'search <StartDate> <EndDate> <CategoryName>' - to search bookings" );
         Console.WriteLine( "'exit' - to exit the application" );
 
-        do
+        while ( ( command = Console.ReadLine() ) != "exit" )
         {
-            command = Console.ReadLine();
-
             try
             {
                 ProcessCommand( command );
@@ -36,9 +35,9 @@ public static class AccommodationsProcessor
             }
             catch ( Exception ex )
             {
-                Console.WriteLine( $"Unknown error: {ex.Message}" );
+                Console.WriteLine( ex.Message );
             }
-        } while ( command != exit );
+        }
     }
 
     private static void ProcessCommand( string command )
@@ -71,6 +70,12 @@ public static class AccommodationsProcessor
 
     private static void ProcessBookCommand( string[] commandParts )
     {
+        if ( commandParts.Length != 6 )
+        {
+            Console.WriteLine( "Invalid number of arguments for booking." );
+            return;
+        }
+
         string strUserId = commandParts[ 1 ];
         string category = commandParts[ 2 ];
         string strStartDate = commandParts[ 3 ];

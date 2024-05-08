@@ -86,6 +86,11 @@ public class BookingService : IBookingService
             throw new ArgumentException( $"Booking with id: '{bookingId}' does not exist" );
         }
 
+        if ( booking.StartDate.Date < DateTime.Today )
+        {
+            throw new ArgumentException( "Start date cannot be earlier than now date" );
+        }
+
         Console.WriteLine( $"Refund of {booking.Cost} {booking.Currency}" );
         _bookings.Remove( booking );
         RoomCategory? category = _categories.FirstOrDefault( c => c.Name == booking.RoomCategory.Name );
@@ -121,6 +126,11 @@ public class BookingService : IBookingService
 
     public decimal CalculateCancellationPenaltyAmount( Booking booking )
     {
+        if ( booking.StartDate.Date < DateTime.Today )
+        {
+            throw new ArgumentException( "Start date cannot be earlier than now date" );
+        }
+
         int daysBeforeArrival = ( booking.StartDate - DateTime.Now ).Days;
 
         Decimal cancellationPenalty = 5000.0m;

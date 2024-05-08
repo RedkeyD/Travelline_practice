@@ -16,4 +16,4 @@
  line 21: обращаемся к полу Имя теперь, чтобы вывести корректно данные в консоль
 
  Google docs:
- https://docs.google.com/document/d/151YY4UDh0vfuzOGDxaLSMWEQLtTxt3KMPb9_HmzURP0/edit?addon_store
+https://docs.google.com/document/d/e/2PACX-1vTaZMN3WsljRKOjb2UoHRMIv-9OCTA3Bo14aS5qlyFdwS0Kya2adbO9VjgnajYKyWPdPxAACLXWnZSw/pub
