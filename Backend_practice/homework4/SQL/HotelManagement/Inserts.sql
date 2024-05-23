@@ -1,40 +1,67 @@
-use HotelManagement
+USE HotelManagement;
 
--- Insert data into Rooms table
-INSERT INTO dbo.Rooms (room_id, room_number, room_type, price_per_night, availability)
-VALUES 
-(1, 101, 'Single', 50.00, 1),
-(2, 102, 'Single', 50.00, 0),
-(3, 201, 'Double', 80.00, 1),
-(4, 202, 'Double', 80.00, 1),
-(5, 301, 'Suite', 120.00, 0);
+INSERT INTO dbo.Rooms (room_number, room_type, price_per_night, availability) VALUES
+(101, N'одиночная', 1500.00, 1),
+(102, N'двойная', 2500.00, 1),
+(103, N'люкс', 3500.00, 0),
+(104, N'одиночная', 1500.00, 1),
+(105, N'двойная', 2500.00, 0),
+(106, N'люкс', 3500.00, 1),
+(107, N'одиночная', 1500.00, 1),
+(108, N'двойная', 2500.00, 1),
+(109, N'люкс', 3500.00, 1),
+(110, N'одиночная', 1500.00, 0);
 
--- Insert data into Customers table
-INSERT INTO dbo.Customers (customer_id, first_name, last_name, email, phone_number)
-VALUES 
-(1, 'John', 'Doe', 'john.doe@example.com', '123-456-7890'),
-(2, 'Jane', 'Smith', 'jane.smith@example.com', '987-654-3210'),
-(3, 'Michael', 'Johnson', 'michael.johnson@example.com', '555-123-4567');
+INSERT INTO dbo.Customers (first_name, last_name, email, phone_number) VALUES
+(N'Иван', N'Иванов', N'ivanov@example.com', N'+79161234567'),
+(N'Мария', N'Петрова', N'petrova@example.com', N'+79161234568'),
+(N'Алексей', N'Сидоров', N'sidorov@example.com', N'+79161234569'),
+(N'Екатерина', N'Кузнецова', N'kuznetsova@example.com', N'+79161234570'),
+(N'Дмитрий', N'Смирнов', N'smirnov@example.com', N'+79161234571'),
+(N'Ольга', N'Попова', N'popova@example.com', N'+79161234572'),
+(N'Сергей', N'Васильев', N'vasilyev@example.com', N'+79161234573'),
+(N'Анна', N'Михайлова', N'mikhailova@example.com', N'+79161234574'),
+(N'Михаил', N'Новиков', N'novikov@example.com', N'+79161234575'),
+(N'Юлия', N'Федорова', N'fedorova@example.com', N'+79161234576');
 
--- Insert data into Bookings table
-INSERT INTO dbo.Bookings (booking_id, customer_id, room_id, check_in_date, check_out_date)
-VALUES 
-(1, 1, 1, '2024-04-15', '2024-04-18'),
-(2, 2, 3, '2024-05-01', '2024-05-05'),
-(3, 3, 4, '2024-06-10', '2024-06-15');
+INSERT INTO dbo.Bookings (customer_id, room_id, check_in_date, check_out_date) VALUES
+(1, 1, '2024-06-01', '2024-06-05'),
+(2, 2, '2024-06-02', '2024-06-06'),
+(3, 3, '2024-06-03', '2024-06-07'),
+(4, 4, '2024-06-04', '2024-06-08'),
+(5, 5, '2024-06-05', '2024-06-09'),
+(6, 6, '2024-06-06', '2024-06-10'),
+(7, 7, '2024-06-07', '2024-06-11'),
+(8, 8, '2024-06-08', '2024-06-12'),
+(9, 9, '2024-06-09', '2024-06-13'),
+(10, 10, '2024-06-10', '2024-06-14');
 
--- Insert data into Facilities table
-INSERT INTO dbo.Facilities (facility_id, facility_name)
-VALUES 
-(1, 'Wi-Fi'),
-(2, 'Кондиционер'),
-(3, 'Мини-бар');
+INSERT INTO dbo.Facilities (facility_name) VALUES
+(N'Бассейн'),
+(N'Тренажерный зал'),
+(N'Сауна'),
+(N'Ресторан'),
+(N'Бар'),
+(N'Конференц-зал'),
+(N'Парковка'),
+(N'Спа'),
+(N'Кинотеатр'),
+(N'Игровая комната');
 
--- Insert data into RoomToFacilities table
-INSERT INTO dbo.RoomToFacilities (room_id, facility_id)
-VALUES 
+INSERT INTO dbo.RoomToFacilities (room_id, facility_id) VALUES
 (1, 1),
-(3, 1),
-(3, 2),
-(4, 1),
-(4, 3);
+(1, 2),
+(2, 3),
+(3, 4),
+(4, 5),
+(5, 6),
+(6, 7),
+(7, 8),
+(8, 9),
+(9, 10),
+(10, 1),
+(10, 2),
+(9, 3),
+(8, 4),
+(7, 5);
+

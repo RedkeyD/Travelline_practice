@@ -1,33 +1,40 @@
+USE HotelManagement;
+
+-- Найдите все доступные номера для бронирования сегодня.
 SELECT *
 FROM dbo.Rooms
 WHERE availability = 1
 AND room_id NOT IN (
     SELECT room_id
     FROM dbo.Bookings
-    WHERE check_in_date <= GETDATE()
-    AND check_out_date >= GETDATE()
+    WHERE GETDATE() BETWEEN check_in_date AND check_out_date
 );
 
+--Найдите всех клиентов, чьи фамилии начинаются с буквы "S".
 SELECT *
 FROM dbo.Customers
 WHERE last_name LIKE 'S%';
 
+-- Найдите все бронирования для определенного клиента (по имени или электронному адресу).
 SELECT *
 FROM dbo.Bookings
 WHERE customer_id IN (
     SELECT customer_id
     FROM dbo.Customers
-    WHERE first_name = 'Имя' OR email = 'email@example.com'
+    WHERE first_name = N'Иван' OR email = 'ivanov@example.com'
 );
 
-SELECT *
-FROM dbo.Bookings
-WHERE room_id = 1;
+-- Найдите все бронирования для определенного номера.
+SELECT b.*
+FROM dbo.Bookings b
+JOIN dbo.Rooms r ON b.room_id = r.room_id
+WHERE r.room_number = 101;
 
+-- Найдите все номера, которые не забронированы на определенную дату.
 SELECT *
 FROM dbo.Rooms
 WHERE room_id NOT IN (
     SELECT room_id
     FROM dbo.Bookings
-    WHERE check_in_date <= '2024-04-15' AND check_out_date >= '2024-04-15'
+    WHERE '2024-04-15' BETWEEN check_in_date AND check_out_date
 );
