@@ -51,10 +51,7 @@ const findMutationsRecursively = (
         newValue,
         children:
           mutationType === "changed" && isObject(oldValue) && isObject(newValue)
-            ? findMutationsRecursively(
-                oldValue as JsonParseData,
-                newValue as JsonParseData
-              )
+            ? findMutationsRecursively(oldValue, newValue)
             : undefined,
       },
     };
